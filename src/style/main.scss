@@ -1,0 +1,57 @@
+body {
+    font-family: "Gilroy-Bold", sans-serif;
+    color: #2f343b;
+    padding: 30px;
+    background-color: #dddcdc2e;
+    user-select: none;
+
+    .app {
+        max-width: 800px;
+        width: 100%;
+        margin: 0 auto;
+
+        .section {
+            background-color: #fff;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px 0 rgba(200, 200, 200, 0.35);
+
+            .title {
+                padding: 20px;
+                font-size: 22px;
+                font-family: "Gilroy-Bold", sans-serif;
+                background-color: #fff;
+                border-radius: 15px;
+                cursor: pointer;
+            }
+
+            .content {
+                padding: 20px;
+                border-radius: 15px;
+
+                .last-update.white {
+                    span {
+                        color: rgba(255, 255, 255, 0.97);
+                    }
+                }
+
+                .last-update {
+                    display: flex;
+                    flex-direction: column;
+
+                    span {
+                        &:nth-child(1) {
+                            font-size: 20px;
+                            font-family: "Gilroy-Medium", sans-serif;
+                        }
+
+                        &:nth-child(2) {
+                            font-size: 26px;
+                            font-family: "Gilroy-Bold", sans-serif;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

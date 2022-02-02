@@ -1,0 +1,27 @@
+.location-content {
+    background: linear-gradient(45deg, #ffb932, #f77c31);
+
+    padding: 0 !important;
+
+    * {
+        border-radius: 15px;
+    }
+
+    .last-update {
+        padding: 15px;
+        width: 100%;
+        align-items: flex-start;
+
+        span {
+            color: rgba(0, 0, 0, 0.8) !important;
+
+            &:nth-child(1) {
+                font-size: 14px !important;
+            }
+
+            &:nth-child(2) {
+                font-size: 20px !important;
+            }
+        }
+    }
+}

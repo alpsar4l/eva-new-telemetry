@@ -1,0 +1,30 @@
+.voltage-content {
+    background: linear-gradient(45deg, #2ee54c, #2c9d3b);
+    display: flex;
+    align-items: center;
+
+    .icon {
+        svg {
+            height: 120px;
+            fill: rgba(0, 0, 0, 0.67);
+        }
+    }
+
+    .value {
+        span {
+            font-family: "Gilroy-Bold", sans-serif;
+            font-size: 50px;
+            color: rgba(0, 0, 0, 0.67);
+        }
+    }
+
+    .last-update {
+        width: 100%;
+        align-items: flex-end;
+        padding-right: 30px;
+
+        span {
+            color: rgba(0, 0, 0, 0.67) !important;
+        }
+    }
+}

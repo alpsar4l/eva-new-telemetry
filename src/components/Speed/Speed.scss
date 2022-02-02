@@ -1,0 +1,24 @@
+.speed-content {
+    background: linear-gradient(45deg, #4348db, #5b5fcb);
+    display: flex;
+    align-items: center;
+
+    .speed-chart {
+        padding: 20px 0;
+
+        #speed-chart {
+            width: 350px !important;
+            height: 150px !important;
+        }
+    }
+
+    .last-update {
+        width: 100%;
+        align-items: flex-end;
+        padding-right: 30px;
+
+        span {
+            color: rgba(255, 255, 255, 0.90) !important;
+        }
+    }
+}
