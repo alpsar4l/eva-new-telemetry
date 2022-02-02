@@ -11,7 +11,7 @@ function App() {
     return (
         <div className="app">
             <div className="eva-logo">
-                <img src="" alt="" />
+                <img src="./assets/eva-logo.png" alt="" />
             </div>
             <Speed value={0.30} />
             <Voltage value={23} />

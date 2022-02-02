@@ -1,7 +1,6 @@
 body {
     font-family: "Gilroy-Bold", sans-serif;
     color: #2f343b;
-    padding: 30px;
     background-color: #dddcdc2e;
     user-select: none;
 
@@ -9,6 +8,16 @@ body {
         max-width: 800px;
         width: 100%;
         margin: 0 auto;
+
+        .eva-logo {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+
+            img {
+                height: 80px;
+            }
+        }
 
         .section {
             background-color: #fff;
