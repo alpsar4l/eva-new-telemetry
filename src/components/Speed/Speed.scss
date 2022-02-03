@@ -5,10 +5,39 @@
 
     .speed-chart {
         padding: 20px 0;
+        position: relative;
 
         #speed-chart {
             width: 350px !important;
             height: 150px !important;
+
+            * {
+                animation: none !important;
+            }
+        }
+
+        .speed-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -30%);
+            font-size: 33px;
+            color: #fff;
+
+            display: flex;
+            align-items: center;
+            grid-gap: 6px;
+
+            span {
+                &:nth-child(1) {
+                    font-size: 37px;
+                }
+
+                &:nth-child(2) {
+                    font-size: 29px;
+                    color: rgba(255, 255, 255, 0.83);
+                }
+            }
         }
     }
 

@@ -4,10 +4,11 @@ import "./Temperature.scss";
 interface TemperatureIF {
     engine: number,
     battery: number,
-    cells: number
+    cells: number,
+    update: string
 }
 
-function Temperature ({ engine, battery, cells }: TemperatureIF) {
+function Temperature ({ engine, battery, cells, update }: TemperatureIF) {
     return (
         <div className="section">
             <div className="title">

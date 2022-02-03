@@ -9,6 +9,13 @@ body {
         width: 100%;
         margin: 0 auto;
 
+        .center-loader {
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+
         .eva-logo {
             display: flex;
             justify-content: center;

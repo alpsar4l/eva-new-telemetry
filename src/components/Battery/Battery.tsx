@@ -2,10 +2,11 @@ import "./Battery.scss";
 import { BatteryIcon } from "../../utils/icons";
 
 interface BatteryIF {
-    value: number
+    value: number;
+    update: string
 }
 
-function Battery ({ value }: BatteryIF) {
+function Battery ({ value, update }: BatteryIF) {
     return (
         <div className="section">
             <div className="title">
@@ -29,7 +30,7 @@ function Battery ({ value }: BatteryIF) {
                     </div>
                     <div className="last-update white">
                         <span>Last Update</span>
-                        <span>12 Aralık 2022 16:28</span>
+                        <span>{update}</span>
                     </div>
                 </div>
             </div>

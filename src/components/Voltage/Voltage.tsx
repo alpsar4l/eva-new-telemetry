@@ -3,10 +3,11 @@ import "./Voltage.scss";
 import { VoltageIcon } from "../../utils/icons";
 
 interface VoltageIF {
-    value: number
+    value: number;
+    update: string
 }
 
-function Voltage ({ value }: VoltageIF) {
+function Voltage ({ value, update }: VoltageIF) {
     return (
         <div className="section">
             <div className="title">
@@ -22,7 +23,7 @@ function Voltage ({ value }: VoltageIF) {
                 </div>
                 <div className="last-update white">
                     <span>Last Update</span>
-                    <span>12 Aralık 2022 16:28</span>
+                    <span>{update}</span>
                 </div>
             </div>
         </div>
