@@ -4,6 +4,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const cors = require('cors');
+const moment = require('moment');
+
+require('dotenv').config();
 
 const corsOptions = {
     origin: [
@@ -33,6 +36,38 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+app.get('/api/muz.txt', function (req, res) {
+    con.query("SELECT * FROM logs ORDER BY id DESC LIMIT 5000", function (err, result, fields) {
+        let response = "";
+
+        result.forEach((item) => {
+            if (item.date) {
+                response += `${moment.unix(item.date).format()};&nbsp;&nbsp;&nbsp;${item.speed}, ${item.voltage}, ${item.battery}, ${item.location}, ${item.engine_temperature}, ${item.battery_temperature}, ${item.cells_temperature};<br>`;
+            }
+        });
+
+        res.send(response);
+    });
+});
+
+app.get('/api/cikita.txt', function (req, res) {
+    con.query("SELECT * FROM logs ORDER BY id DESC LIMIT 5000", function (err, result, fields) {
+        let response = "";
+
+        result.forEach((item) => {
+            if (item.date) {
+                response += `
+                    TIME: ${moment.unix(item.date).format()} <br>
+                    DATA: ${item.speed}, ${item.voltage}, ${item.battery}, ${item.location}, ${item.engine_temperature}, ${item.battery_temperature}, ${item.cells_temperature}
+                    <br>---<br>
+                `;
+            }
+        });
+
+        res.send(response);
+    });
 });
 
 app.get('/api/collect/latest', function (req, res) {
@@ -87,4 +122,4 @@ app.post('/api/send', function (req, res) {
     }
 });
 
-app.listen(80);
+app.listen(process.env.PORT);
