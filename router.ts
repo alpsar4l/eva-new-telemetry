@@ -11,7 +11,9 @@ require('dotenv').config();
 const corsOptions = {
     origin: [
         "http://localhost:9000",
-        "http://localhost:3000"
+        "http://localhost:3000",
+        "http://localhost:9999",
+        "http://localhost:10000"
     ],
     optionsSuccessStatus: 200,
 };
@@ -85,7 +87,36 @@ app.get('/api/collect/latest', function (req, res) {
     });
 });
 
-app.post('/api/send', function (req, res) {
+app.post('/api/send/withoutjson', function (req, res) {
+    // @ts-ignore
+    const date = Math.floor(new Date() / 1000);
+    const data = req.body.data.split(",");
+
+    if (data.length !== 8) {
+        res.send({
+            status: 256,
+            message: "Eksik veri gönderildi (JSON değil)",
+            bodyParse: req.body.data
+        });
+    } else {
+        con.query(`INSERT INTO logs (id, vehicle, speed, voltage, battery, location, engine_temperature, battery_temperature, cells_temperature, date) VALUES (NULL, 'III', '${data[0]}', '${data[1]}', '${data[2]}', '${data[3]},${data[4]}', '${data[5]}', '${data[6]}', '${data[7]}', '${date}');`, function (err, result, fields) {
+            if (err)
+                return res.send({
+                    status: 128,
+                    message: "Veriler işlenirken veritabanı cortladı (muhtemelen yanlış veri yollandı) (JSON değil)",
+                    bodyParse: req.body
+                });
+        });
+
+        res.send({
+            status: 128,
+            message: "Veriler işlendi (JSON)",
+            bodyParse: req.body
+        });
+    }
+});
+
+app.post('/api/send/withjson', function (req, res) {
     const allowKeys = ["speed", "voltage", "battery", "location", "engine_temperature", "battery_temperature", "cells_temperature"];
     let controller = 0;
 
@@ -103,20 +134,20 @@ app.post('/api/send', function (req, res) {
             if (err)
                 return res.send({
                     status: 128,
-                    message: "Veriler işlenirken veritabanı cortladı (muhtemelen yanlış veri yollandı)",
+                    message: "Veriler işlenirken veritabanı cortladı (muhtemelen yanlış veri yollandı) (JSON)",
                     bodyParse: req.body
                 });
         });
 
         res.send({
             status: 128,
-            message: "Veriler işlendi",
+            message: "Veriler işlendi (JSON)",
             bodyParse: req.body
         });
     } else {
         res.send({
             status: 256,
-            message: "Eksik veri gönderildi",
+            message: "Eksik veri gönderildi (JSON)",
             bodyParse: req.body
         });
     }

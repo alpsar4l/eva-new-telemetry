@@ -12,7 +12,7 @@ import Location from "./components/Location/Location";
 import Temperature from "./components/Temperature/Temperature";
 
 function App() {
-    const url = "http://localhost:9000";
+    const url = "http://localhost:9999";
     const [latestData, setData] = useState<any>([]);
     const [lastUpdate, setLU] = useState("");
 
